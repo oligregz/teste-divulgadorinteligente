@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 
 export interface IMeta {
 	pagination?: {
@@ -55,4 +56,17 @@ export interface ICoupon {
 	title: string;
 	description: string;
 	seller: string;
+}
+
+export interface ICartItem extends IProduct {
+	quantity: number;
+}
+
+export interface ICartState {
+	items: ICartItem[];
+	totalAmount: number;
+}
+
+export interface IStoreProviderProps {
+	children: ReactNode;
 }
