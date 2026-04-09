@@ -79,3 +79,7 @@ export interface ICartDrawerProps {
 	isOpen: boolean;
 	onClose: () => void;
 }
+
+export interface IHomeProps {
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
