@@ -74,3 +74,8 @@ export interface IStoreProviderProps {
 export interface IProductCardProps {
 	product: IProduct;
 }
+
+export interface ICartDrawerProps {
+	isOpen: boolean;
+	onClose: () => void;
+}
