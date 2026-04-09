@@ -53,7 +53,7 @@ export async function getCoupons(start = 0, limit = 10): Promise<ICoupon[]> {
 }
 
 export async function getProductsByCoupon(couponName: string, start = 0, limit = 20): Promise<IProduct[]> {
-	const endpoint = `/products?sitename=${SITENAME}&start=${start}&limit=${limit}&sellers[]=magalu&coupon=${couponName}`;
+	const endpoint = `/products?sitename=${SITENAME}&start=${start}&limit=${limit}&coupon=${couponName}`;
 	const response = await fetch(`${BASE_URL}${endpoint}`);
 
 	if (!response.ok) throw new Error('Failed to search for products using coupon');

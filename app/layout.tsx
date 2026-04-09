@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import StoreProvider from "../store/StoreProvider";
+import Header from "../components/Header.component";
 
 export const metadata: Metadata = {
   title: "Dolor Auctor",
@@ -15,8 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <StoreProvider>{children}</StoreProvider>
+      <body className="bg-gray-50 min-h-screen">
+        <StoreProvider>
+          <Header />
+          {children}
+        </StoreProvider>
       </body>
     </html>
   );
