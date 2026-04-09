@@ -4,10 +4,15 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import CartDrawer from "./CartDrawer.compoent";
 
 export default function Header() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState(
+    searchParams.get("search") || "",
+  );
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -15,7 +20,16 @@ export default function Header() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Searching for:", searchTerm);
+
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (searchTerm.trim()) {
+      params.set("search", searchTerm.trim());
+    } else {
+      params.delete("search");
+    }
+
+    router.push(`/?${params.toString()}`);
   };
 
   return (
