@@ -70,3 +70,7 @@ export interface ICartState {
 export interface IStoreProviderProps {
 	children: ReactNode;
 }
+
+export interface IProductCardProps {
+	product: IProduct;
+}
