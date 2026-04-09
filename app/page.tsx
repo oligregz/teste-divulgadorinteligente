@@ -12,6 +12,9 @@ export default async function Home({ searchParams }: IHomeProps) {
   const activeCoupon =
     typeof params?.coupon === "string" ? params.coupon : undefined;
 
+  const searchQuery =
+    typeof params?.search === "string" ? params.search.toLowerCase() : "";
+
   const couponsData = getCoupons(0, 10);
   const productsData = activeCoupon
     ? getProductsByCoupon(activeCoupon, 0, 20)
@@ -19,13 +22,22 @@ export default async function Home({ searchParams }: IHomeProps) {
 
   const [coupons, products] = await Promise.all([couponsData, productsData]);
 
+  const filteredProducts = products.filter((product) => {
+    if (!searchQuery) return true;
+
+    const titleMatch = product.title.toLowerCase().includes(searchQuery);
+    const sellerMatch = product.seller.toLowerCase().includes(searchQuery);
+
+    return titleMatch || sellerMatch;
+  });
+
   return (
     <main className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Latest Offers</h1>
 
       <CouponList coupons={coupons} activeCoupon={activeCoupon} />
 
-      {products.length === 0 ? (
+      {filteredProducts.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-gray-500 bg-white rounded-xl border border-dashed border-gray-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -42,12 +54,14 @@ export default async function Home({ searchParams }: IHomeProps) {
             />
           </svg>
           <p className="text-lg font-medium">
-            No products found for this coupon.
+            {searchQuery
+              ? `No products found matching "${searchQuery}".`
+              : "No products found for this coupon."}
           </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
