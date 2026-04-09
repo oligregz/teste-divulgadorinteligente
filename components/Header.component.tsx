@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import Link from "next/link";
-import CartDrawer from "./CartDrawer";
+import CartDrawer from "./CartDrawer.compoent";
 
 export default function Header() {
   const [searchTerm, setSearchTerm] = useState("");
