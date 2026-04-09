@@ -20,13 +20,13 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between gap-4">
         <Link id="L-logo-area" href="/" className="flex-shrink-0">
-          <span className="text-xl font-bold text-blue-600 tracking-tight">
+          <span className="text-xl font-bold text-teal-700 tracking-tight">
             SmartPromo
           </span>
         </Link>
 
         <form
-          id="f-search-bar"
+          id="d-search-bar"
           onSubmit={handleSearch}
           className="flex-1 max-w-2xl hidden sm:flex relative"
         >
@@ -35,11 +35,11 @@ export default function Header() {
             placeholder="Search for products or brands..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-4 pr-10 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            className="w-full pl-4 pr-10 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
           />
           <button
             type="submit"
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-600"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-teal-700"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -59,10 +59,10 @@ export default function Header() {
         </form>
 
         <div
-          id="d-cart-icon-and-icons"
+          id="d-action-cart-icon"
           className="flex items-center gap-4 flex-shrink-0"
         >
-          <button className="relative p-2 text-gray-600 hover:text-blue-600 transition-colors">
+          <button className="relative p-2 text-gray-600 hover:text-teal-700 transition-colors">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -79,10 +79,7 @@ export default function Header() {
             </svg>
 
             {totalItems > 0 && (
-              <span
-                id="s-redux-badge"
-                className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/4 -translate-y-1/4 bg-red-600 rounded-full"
-              >
+              <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/4 -translate-y-1/4 bg-red-600 rounded-full">
                 {totalItems}
               </span>
             )}
