@@ -1,12 +1,9 @@
 "use client";
 
 import { useDispatch } from "react-redux";
+import Image from "next/image"; // 1. Importação do componente Image
 import { addItem } from "../store/cartSlice";
-import { IProduct } from "../types/api.type";
-
-interface IProductCardProps {
-  product: IProduct;
-}
+import { IProductCardProps } from "../types/api.type";
 
 export default function ProductCard({ product }: IProductCardProps) {
   const dispatch = useDispatch();
@@ -19,22 +16,24 @@ export default function ProductCard({ product }: IProductCardProps) {
     <div className="flex flex-col bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300">
       <div
         id="d-product-image"
-        className="relative w-full aspect-square bg-gray-50 p-4 flex items-center justify-center"
+        className="relative w-full aspect-square bg-gray-50 flex items-center justify-center"
       >
         {product.coupon && (
-          <span className="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+          <span className="absolute top-2 left-2 z-10 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
             {product.coupon}
           </span>
         )}
-        <img
+
+        <Image
           src={product.image}
           alt={product.title}
-          className="object-contain w-full h-full mix-blend-multiply"
-          loading="lazy"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-contain mix-blend-multiply p-4"
         />
       </div>
 
-      <div id="d-product-details" className="p-4 flex flex-col flex-grow">
+      <div id="d-detail-products" className="p-4 flex flex-col flex-grow">
         <span className="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-1">
           {product.seller}
         </span>
@@ -59,7 +58,7 @@ export default function ProductCard({ product }: IProductCardProps) {
         <button
           id="b-action"
           onClick={handleAddToCart}
-          className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+          className="w-full py-2 px-4 bg-teal-700 hover:bg-teal-800 text-white text-sm font-semibold rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
