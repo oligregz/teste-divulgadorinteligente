@@ -1,4 +1,4 @@
-# 🚀 SmartPromo - Fullstack Technical Test (Divulgador Inteligente)
+# 🚀 SmartPromo
 
 Application developed as a technical test for the Fullstack Developer position. The project consumes a REST API (Strapi) to list products, display coupons, filter offers, and manage an interactive shopping cart.
 
