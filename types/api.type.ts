@@ -70,3 +70,16 @@ export interface ICartState {
 export interface IStoreProviderProps {
 	children: ReactNode;
 }
+
+export interface IProductCardProps {
+	product: IProduct;
+}
+
+export interface ICartDrawerProps {
+	isOpen: boolean;
+	onClose: () => void;
+}
+
+export interface IHomeProps {
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
