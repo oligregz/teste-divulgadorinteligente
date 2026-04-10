@@ -33,7 +33,7 @@ export default async function Home({ searchParams }: IHomeProps) {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Latest Offers</h1>
+      <h1 className="text-2xl font-bold text-gray-100 mb-6">Latest Offers</h1>
 
       <CouponList coupons={coupons} activeCoupon={activeCoupon} />
 
