@@ -52,7 +52,7 @@ export default function Header() {
               placeholder="Search for products or brands..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-4 pr-10 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600"
+              className="w-full pl-4 pr-10 py-2 rounded-full border border-gray-300 focus:outline-none focus:border-teal-600 focus:ring-1 focus:ring-teal-600 text-teal-700"
             />
             <button
               type="submit"
